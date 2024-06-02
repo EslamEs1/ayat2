@@ -181,3 +181,25 @@
 
 
 })(window.jQuery);
+
+
+
+// pricing 
+function changePackage(packageType) {
+    // Hide all package items
+    var items = document.querySelectorAll(".package");
+    items.forEach(function (item) {
+        item.style.display = "none";
+    });
+
+    // Show the selected package items
+    var selectedItems = document.querySelectorAll(".item-" + packageType);
+    selectedItems.forEach(function (item) {
+        item.style.display = "block";
+    });
+}
+
+// By default, show the 30 minutes package items
+document.addEventListener("DOMContentLoaded", function () {
+    changePackage("30");
+});

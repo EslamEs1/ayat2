@@ -1294,92 +1294,125 @@ Portfolio
 Pricing
 --------------------------------------------- 
 */
-
-.pricing-tables .tables-left-dec img {
-  width: 418px;
-  height: 851px;
-  left: 0;
-  top: 120px;
-  position: absolute;
-  z-index: 1;
-}
-
-.pricing-tables .tables-right-dec img {
-  width: 359px;
-  height: 848px;
-  right: 0;
-  top: 45px;
-  position: absolute;
-  z-index: 1
+/* Pricing Tables */
+.pricing-tables .tables-left-dec img, .pricing-tables .tables-right-dec img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: 1;
 }
 
 .pricing-tables {
-  z-index: 2;
-  position: relative;
-  padding-top: 120px;
-  margin-top: 0px;
+    z-index: 2;
+    position: relative;
+    padding-top: 120px;
+    margin-top: 0px;
 }
 
 .pricing-tables .section-heading {
-  text-align: center;
-  margin-bottom: 60px;
+    text-align: center;
+    margin-bottom: 60px;
 }
 
 .pricing-tables .section-heading h2 {
-  text-align: center;
-  margin: 0px 60px 0px 60px;
-  margin-bottom: -5px;
-  position: relative;
-  z-index: 1;
+    margin: 0px 60px 0px 60px;
+    margin-bottom: -5px;
+    position: relative;
+    z-index: 1;
 }
 
 .pricing-tables .item {
-  position: relative;
-  z-index: 2;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 60px;
-  text-align: center;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-  border-radius: 45px;
+    position: relative;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 60px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    border-radius: 45px;
+    margin-bottom: 30px;
 }
 
 .pricing-tables .item h4 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2a2a2a;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2a2a2a;
 }
 
 .pricing-tables .item em {
-  color: #ff695f;
-  font-size: 15px;
-  display: block;
-  margin-top: 25px;
-  text-decoration: line-through;
-  font-style: normal;
+    color: #ff695f;
+    font-size: 15px;
+    display: block;
+    margin-top: 25px;
+    text-decoration: line-through;
+    font-style: normal;
 }
 
 .pricing-tables .item span {
-  font-size: 44px;
-  color: #ff695f;
-  font-weight: 700;
-  display: block;
-  margin-top: -5px;
+    font-size: 44px;
+    color: #ff695f;
+    font-weight: 700;
+    display: block;
+    margin-top: -5px;
 }
 
 .pricing-tables .item ul {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .pricing-tables .item ul li {
-  display: block;
-  font-size: 15px;
-  color: #7a7a7a;
-  margin-bottom: 20px;
+    display: block;
+    font-size: 15px;
+    color: #7a7a7a;
+    margin-bottom: 20px;
 }
 
-.pricing-tables .item .main-blue-button {
-  margin-top: 40px;
+.pricing-tables .item .main-blue-button-hover a {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #ff695f;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.pricing-tables .item .main-blue-button-hover a:hover {
+    background-color: #e65c50;
+}
+
+/* Responsive Design */
+/* @media (max-width: 767px) {
+    .pricing-tables .item {
+        margin-bottom: 30px;
+    }
+} */
+
+
+/* Button Group */
+.pricing-tables .btn-group {
+    margin-bottom: 30px;
+}
+
+.pricing-tables .btn {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color:#ff695f;
+}
+
+.pricing-tables .btn:hover {
+    background-color: #ff695f;
+    color: #fff;
+}
+
+.pricing-tables .btn:focus {
+    background-color: #ff695f;
+    color: #fff;
 }
 
 .pricing-tables .first-item {

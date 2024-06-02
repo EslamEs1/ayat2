@@ -2260,3 +2260,13 @@ responsive
 .slider-container  .section-heading{
   text-align: center;
 }
+
+.whatsapp-btn{
+  width: 100%;
+  padding-top: 10px;
+}
+
+.whatsapp-btn a{
+  color: green;
+}
+

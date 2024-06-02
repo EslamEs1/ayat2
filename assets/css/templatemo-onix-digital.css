@@ -1305,8 +1305,10 @@ Pricing
 .pricing-tables {
     z-index: 2;
     position: relative;
-    padding-top: 120px;
+    padding-top: 60px;
+    padding-bottom: 20px;
     margin-top: 0px;
+    background-color: #fafafa;
 }
 
 .pricing-tables .section-heading {
@@ -1319,6 +1321,7 @@ Pricing
     margin-bottom: -5px;
     position: relative;
     z-index: 1;
+    font-size: 20px;
 }
 
 .pricing-tables .item {
@@ -1331,6 +1334,8 @@ Pricing
     box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
     border-radius: 45px;
     margin-bottom: 30px;
+    background-color: white;
+
 }
 
 .pricing-tables .item h4 {

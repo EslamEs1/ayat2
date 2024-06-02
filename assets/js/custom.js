@@ -203,3 +203,60 @@ function changePackage(packageType) {
 document.addEventListener("DOMContentLoaded", function () {
     changePackage("30");
 });
+
+
+
+// Rating 
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".slider");
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+    const slideWidth = slides[0].clientWidth; // Get the width of a single slide
+    const totalSlides = slides.length;
+
+    // Clone the slides for seamless looping
+    slider.innerHTML += slider.innerHTML;
+
+    // Update slides after cloning
+    slides = document.querySelectorAll(".slide");
+
+    function showSlide() {
+        slider.style.transition = "transform 0.5s ease"; // Apply transition
+        slider.style.transform = `translateX(-${index * slideWidth}px)`; // Move to the current slide
+    }
+
+    // Show initial slide
+    showSlide();
+
+    // Function to move to the next slide
+    function nextSlide() {
+        index++;
+        if (index === totalSlides * 2) {
+            index = totalSlides; // If it reaches the last cloned slide, jump back to the first original slide
+            setTimeout(() => {
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(-${index * slideWidth}px)`; // Move to the first original slide without transition
+                index = totalSlides; // Reset index to the first original slide
+            }, 500); // Adjust timing based on transition duration
+        }
+        showSlide();
+    }
+
+    // Function to move to the previous slide
+    function prevSlide() {
+        index--;
+        if (index < 0) {
+            index = totalSlides - 1; // If it reaches the first original slide, jump to the last cloned slide
+            setTimeout(() => {
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(-${index * slideWidth}px)`; // Move to the last cloned slide without transition
+                index = totalSlides - 1; // Reset index to the last cloned slide
+            }, 500); // Adjust timing based on transition duration
+        }
+        showSlide();
+    }
+
+    // Automatic sliding in a loop
+    setInterval(nextSlide, 5000); // Change slide every 5 seconds (adjust as needed)
+});
+

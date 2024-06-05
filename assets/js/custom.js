@@ -62,6 +62,31 @@
           }
     })
 
+    
+    $(".owl-slider").owlCarousel({
+        items: 4,
+        loop: true,
+        dots: true,
+        nav: false,
+        autoplay: true,
+        margin: 5,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            1000: {
+                items: 3,
+            },
+            1600: {
+                items: 4,
+            },
+        },
+    });
+
+
     $('.owl-portfolio').owlCarousel({
         items:4,
         loop:true,
@@ -205,58 +230,91 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Testimonials;
+$(document).ready(function () {
+    var sync1 = $("#sync1");
+    var sync2 = $("#sync2");
+    var slidesPerPage = 4; //globaly define number of elements per page
+    var syncedSecondary = true;
 
-// Rating 
-document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".slider");
-    let slides = document.querySelectorAll(".slide");
-    let index = 0;
-    const slideWidth = slides[0].clientWidth; // Get the width of a single slide
-    const totalSlides = slides.length;
+    sync1
+        .on("initialized.owl.carousel", function () {
+            sync1
+                .find(".owl-video")
+                .eq(0)
+                .find(".owl-video-play-icon")
+                .trigger("click");
+        })
+        .owlCarousel({
+            items: 1,
+            dots: false,
+            nav: false,
+            loop: false,
+            video: true,
+        })
+        .on("changed.owl.carousel", syncPosition);
 
-    // Clone the slides for seamless looping
-    slider.innerHTML += slider.innerHTML;
+    sync2
+        .on("initialized.owl.carousel", function () {
+            sync2.find(".owl-item").eq(0).addClass("current");
+        })
+        .owlCarousel({
+            items: slidesPerPage,
+            dots: false,
+            nav: false,
+            loop: false,
+            video: true,
+            slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+            responsiveRefreshRate: 100,
+        })
+        .on("changed.owl.carousel", syncPosition2);
 
-    // Update slides after cloning
-    slides = document.querySelectorAll(".slide");
+    function syncPosition(el) {
+        //if you set loop to false, you have to restore this next line
+        //var current = el.item.index;
 
-    function showSlide() {
-        slider.style.transition = "transform 0.5s ease"; // Apply transition
-        slider.style.transform = `translateX(-${index * slideWidth}px)`; // Move to the current slide
-    }
+        //if you disable loop you have to comment this block
+        var count = el.item.count - 1;
+        var current = Math.round(el.item.index - el.item.count / 2 - 0.5);
 
-    // Show initial slide
-    showSlide();
-
-    // Function to move to the next slide
-    function nextSlide() {
-        index++;
-        if (index === totalSlides * 2) {
-            index = totalSlides; // If it reaches the last cloned slide, jump back to the first original slide
-            setTimeout(() => {
-                slider.style.transition = "none";
-                slider.style.transform = `translateX(-${index * slideWidth}px)`; // Move to the first original slide without transition
-                index = totalSlides; // Reset index to the first original slide
-            }, 500); // Adjust timing based on transition duration
+        if (current < 0) {
+            current = count;
         }
-        showSlide();
-    }
-
-    // Function to move to the previous slide
-    function prevSlide() {
-        index--;
-        if (index < 0) {
-            index = totalSlides - 1; // If it reaches the first original slide, jump to the last cloned slide
-            setTimeout(() => {
-                slider.style.transition = "none";
-                slider.style.transform = `translateX(-${index * slideWidth}px)`; // Move to the last cloned slide without transition
-                index = totalSlides - 1; // Reset index to the last cloned slide
-            }, 500); // Adjust timing based on transition duration
+        if (current > count) {
+            current = 0;
         }
-        showSlide();
+
+        //end block
+
+        sync2
+            .find(".owl-item")
+            .removeClass("current")
+            .eq(current)
+            .addClass("current");
+        var onscreen = sync2.find(".owl-item.active").length - 1;
+        var start = sync2.find(".owl-item.active").first().index();
+        var end = sync2.find(".owl-item.active").last().index();
+
+        if (current > end) {
+            sync2.data("owl.carousel").to(current, 100, true);
+        }
+        if (current < start) {
+            sync2.data("owl.carousel").to(current - onscreen, 100, true);
+        }
     }
 
-    // Automatic sliding in a loop
-    setInterval(nextSlide, 5000); // Change slide every 5 seconds (adjust as needed)
+    function syncPosition2(el) {
+        if (syncedSecondary) {
+            var number = el.item.index;
+            sync1.data("owl.carousel").to(number, 100, true);
+        }
+    }
+
+    sync2.on("click", ".owl-item", function (e) {
+        e.preventDefault();
+        var number = $(this).index();
+        sync1.data("owl.carousel").to(number, 300, true);
+
+        //sync1.data('to.owl.carousel', [event.item.index,300,true]);
+    });
 });
-

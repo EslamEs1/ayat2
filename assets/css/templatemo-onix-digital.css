@@ -238,16 +238,18 @@ body {
 
 .main-blue-button-hover a {
   display: inline-block;
-  background-color: #ffa500;
+  background-color: #ff6600;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
   text-transform: capitalize;
   padding: 12px 25px;
   border-radius: 23px;
-  letter-spacing: 0.25px;
+  letter-spacing: 1px;
   transition: all .3s;
   animation: moveUpDown 0.5s ease infinite;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 @keyframes moveUpDown {
@@ -263,10 +265,12 @@ body {
 }
 
 .main-blue-button-hover a:hover {
-  background-color: #ddbd05; /* Change the background color on hover */
+  background-color: #ffa500; /* Change the background color on hover */
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); /* Add a box shadow on hover for depth */
    /* Apply the animation */
 }
+
+
 
 .main-red-button a {
   display: inline-block;
@@ -648,7 +652,7 @@ header
 }
 
 .header-area.header-sticky .nav li a.active {
-  color: #ff685f;
+  color: #2E8B57;
 }
 
 @media (max-width: 1200px) {
@@ -900,15 +904,6 @@ Banner Style
   overflow: hidden;
 }
 
-.main-banner:after {
-  content: '';
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 0;
-  top: 100px;
-  width: 267px;
-  height: 532px;
-}
 
 .main-banner:before {
   content: '';
@@ -1055,10 +1050,13 @@ Services Style
   text-align: center;
   margin: 15px;
   border-radius: 20px;
-  background-color: #fff;
   padding: 30px;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.05);
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
+
+
 
 .our-services .item h4 {
   font-size: 20px;
@@ -1296,30 +1294,61 @@ Pricing
   background-image: url(../images/third-plan-bg.png);
 }
 
-.highest-price .item {
-    border: 2px solid #FFD700; /* Gold border to highlight */
-    background-color: #FFFACD; /* Light golden background */
+.highest-price .item,
+.highest-price-2 .item {
     position: relative;
     z-index: 3;
+    border: 2px solid transparent; /* Reset border */
+}
+
+.highest-price .item {
+    border-color: #FFA500; /* Gold border for highest-price items */
+    background-color: #FFE4B5; /* Light golden background for highest-price items */
 }
 
 .highest-price .item h4,
 .highest-price .item em,
 .highest-price .item span {
-    color: #DAA520; /* Darker gold color for text */
+    color: #FFA500; /* Darker gold color for text of highest-price items */
 }
 
 .highest-price .item .main-blue-button-hover a {
-    background-color: #DAA520; /* Button background color */
+    background-color: #FFA500; /* Button background color for highest-price items */
 }
 
-.highest-price .item .main-blue-button-hover a:hover {
-    background-color: #B8860B; /* Darker hover color */
-}
 
-/* Optional: Add a badge or label for more emphasis */
 .highest-price .item::before {
     content: "Most Popular";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #FFA500;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.highest-price-2 .item {
+    border-color: #FFD700; /* Orange border for highest-price-2 items */
+    background-color: #FFFACD; /* Light orange background for highest-price-2 items */
+}
+
+.highest-price-2 .item h4,
+.highest-price-2 .item em,
+.highest-price-2 .item span {
+    color: #DAA520; /* Orange color for text of highest-price-2 items */
+}
+
+.highest-price-2 .item .main-blue-button-hover a {
+    background-color: #DAA520; /* Button background color for highest-price-2 items */
+}
+
+
+
+.highest-price-2 .item::before {
+    content: "Best Value";
     position: absolute;
     top: -10px;
     right: -10px;
@@ -1330,6 +1359,7 @@ Pricing
     font-size: 12px;
     font-weight: bold;
 }
+
 
 
 /* 
@@ -1664,6 +1694,90 @@ footer .copyright p a {
   color: #2E8B57;
 }
 
+
+
+
+.get-session a {
+  display: inline-block;
+  background-color: #ff6600;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 10px 15px;
+  border-radius: 23px;
+  letter-spacing: 0.25px;
+  transition: all .3s;
+  position: relative; /* Add position relative for absolute positioning of pseudo-elements */
+  overflow: hidden; /* Hide overflowing animations */
+  animation: pulsate 1s infinite;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+  font-weight: 500;
+}
+
+.get-session a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+  transition: all .5s;
+  border-radius: 50%;
+  z-index: 0; /* Push behind the button */
+
+}
+
+.get-session a:hover::before {
+  transform: translate(-50%, -50%) scale(0); /* Scale down and fade out */
+}
+
+.get-session a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
+  transition: all .5s;
+  border-radius: 50%;
+  z-index: -1; /* Push further behind the button */
+}
+
+.get-session a:hover::after {
+  transform: translate(-50%, -50%) scale(0); /* Scale down and fade out */
+}
+
+.get-session a:hover {
+  background-color: #ffa500; /* Change the background color on hover */
+  box-shadow: 0px 0px 0px; /* Add a larger box shadow on hover for depth */
+  color: #fff; /* Change text color on hover */
+  animation: pulsate 1s infinite; /* Apply pulsating animation */
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    color:#f1f1f1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .get-session {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+
 /* 
 ---------------------------------------------
 responsive
@@ -1785,6 +1899,19 @@ responsive
   .contact-us .info span {
     margin-bottom: 20px;
   }
+
+  .main-banner {
+  padding: 130px 0px 60px 0px;
+  
+}
+
+  .left-image {
+    position: relative;
+    left: 15px;
+  }
+
+  
+
 }
 
 
@@ -2082,6 +2209,27 @@ responsive
 }
 
 
+#sync1 {
+  .owl-video-wrapper {
+    height: 300px;
+  }
+}
+
+#sync2 {
+  width:100%;
+  .owl-video-wrapper {
+    height: 150px;
+  }
+  .owl-video-play-icon {
+    //background-size:60%;
+    display:none;
+  }
+  .owl-video-tn {
+    cursor: pointer;
+  }
+}
+
+
 
 .accordion {
   padding: 30px 0;
@@ -2217,35 +2365,29 @@ responsive
 
 /* rating */
 .slider-container {
-    position: relative;
-    overflow: hidden;
     padding: 60px 0;
     background-color: #fafafa;
     margin-top:20px;
 }
 
-.slider-container .slider {
-    display: flex;
-    transition: transform 0.5s ease;
-}
+
 
 .slider-container .slide {
-    flex: 0 0 auto;
-    width: 300px; /* Adjust width based on your design */
-    padding: 20px;
+    padding: 15px;
     text-align: center;
-    background-color: #2E8B57; /* Change background color */
     color: white; /* Change text color */
     border-radius: 10px;
     margin: 0 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+    box-shadow: 0px 0px 10px rgba(87, 87, 87, 0.3); /* Add shadow effect */
 }
 
 .slider-container .slide img {
-    width: 100px; /* Adjust image size */
-    border-radius: 50%;
+    width: 30px;
+    max-height: 250px; /* Adjust image size */
+    border-radius: 5%;
     margin-bottom: 10px;
     border: 3px solid white; /* Add border around the image */
+    object-fit: cover;
 }
 
 .slider-container .rating {
@@ -2263,7 +2405,7 @@ responsive
 
 .slider-container .slide p {
     margin-bottom: 20px; /* Increase bottom margin */
-    color: white;
+    color: #777;
 }
 
 
@@ -2271,13 +2413,14 @@ responsive
   text-align: center;
 }
 
+
 .whatsapp-btn{
   width: 100%;
   padding-top: 10px;
 }
 
 .whatsapp-btn a{
-  color: green;
+  color: #2E8B57;
 }
 
 

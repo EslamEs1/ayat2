@@ -2185,48 +2185,41 @@ responsive
 
 
 /* testimonials */
-.testimonials {
-    width: 100%;
-    text-align: center;
-    padding:30px 0;
+
+.testimonials{
+  padding:60px 0;
 }
 
-.testimonials .item {
-    margin-bottom: 20px;
-    text-align: center;
+.testimonials .section-heading{
+  text-align: center;
+  padding: 0;
 }
 
-.testimonials .item video {
-    width: 60%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.video-section .item{
+  opacity:0.4;
+  transition:.4s ease all;
+  margin:0 20px;
+  transform:scale(.8);
 }
 
-.testimonials .item h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
+@media(max-width:1000px){
+  .video-section .item{margin:0; transform:scale(.9)}
 }
 
+.video-section .active .item{
+  opacity:1;
+  transform:scale(1);
+} 
 
-#sync1 {
-  .owl-video-wrapper {
-    height: 300px;
-  }
+
+.video-section .owl-item {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
 }
 
-#sync2 {
-  width:100%;
-  .owl-video-wrapper {
-    height: 150px;
-  }
-  .owl-video-play-icon {
-    //background-size:60%;
-    display:none;
-  }
-  .owl-video-tn {
-    cursor: pointer;
-  }
+.video-section video{
+  max-width:100%;
+  height:auto;
 }
 
 

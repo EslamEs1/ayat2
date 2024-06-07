@@ -2372,6 +2372,12 @@ responsive
     object-fit: cover;
 }
 
+.slider-container .slide h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color:#333;
+}
+
 .slider-container .rating {
     font-size: 24px;
 }
@@ -2393,6 +2399,7 @@ responsive
 
 .slider-container  .section-heading{
   text-align: center;
+  margin-bottom: 20px;
 }
 
 
@@ -3012,6 +3019,40 @@ responsive
 
 .course-item a:hover {
     background-color: #256d44;
+}
+
+.join-us{
+  padding:60px 0;
+}
+
+.join-us .row{
+  margin: auto 0;
+}
+
+.join-us .section-heading{
+  margin-bottom: 50px;
+  
+}
+
+.join-us .section-heading p{
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 30px;
+  
+}
+.join-us .section-heading a{
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 30px;
+  background-color: #2E8B57;
+  color: #fff;
+  padding: 7px 20px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.join-us .section-heading a:hover{
+  background-color: #256d44;
 }
 
 /* contact */
